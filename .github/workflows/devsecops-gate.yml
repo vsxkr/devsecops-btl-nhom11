@@ -35,7 +35,10 @@ name: devsecops-gate
 
 on:
   pull_request:
-    branches: [dev, main]
+    # `patched` nam trong danh sach vi vong doi quy tac o auto-remediate.yml mo
+    # pull request VAO nhanh nay. Thieu no thi mot pull request do tu dong hoa
+    # sinh ra se khong di qua cong nao, dung dieu ma CS-07 cam.
+    branches: [dev, main, patched]
   push:
     branches: [dev, main, patched]
   workflow_dispatch:
