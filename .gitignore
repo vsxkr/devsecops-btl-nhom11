@@ -14,8 +14,13 @@ trivy.exe
 __pycache__/
 *.pyc
 
+# Bien moi truong co mat khau that
 .env
 app/InlaneWeb/.env
+.inspect/
+
+# Bi mat dang tep cho container, sinh tai cho, khong commit
+app/InlaneWeb/secrets/
 
 # Bao cao nop thay nam o thu muc local rieng, khong commit vao repo
 report/
