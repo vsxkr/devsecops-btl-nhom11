@@ -5,7 +5,25 @@ liệu cá nhân, bằng một pipeline năm stage có cổng chặn thật, m�
 thành mã và chứng minh hai chiều, và mọi cổng truy được về một điều khoản chính
 sách của doanh nghiệp.
 
-Giảng viên: TS. Phạm Hoàng Duy. Hạn nộp 31/10/2026.
+Giảng viên: TS. Phạm Hoàng Duy. Trưởng nhóm nộp bài: Nguyễn Giang Nam, B26CHAT030.
+Hạn nộp 07/11/2026.
+
+## Đọc nhanh cho người chấm
+
+| | |
+|---|---|
+| Nhánh `main` | trạng thái **có khiếm khuyết**, là đối tượng được đánh giá. Pipeline phải đỏ ở đây |
+| Nhánh `patched` | bản vá. Pipeline phải xanh ở đây |
+| Run xanh mới nhất | [`41894924094`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41894924094) trên `patched`, 7 trên 7 job |
+| Run có đủ artifact minh chứng | [`41889988744`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889988744), 5 artifact `evidence-*` |
+| Run đỏ của baseline | [`41889869182`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889869182) trên `main`, bị chặn ở stage 1 và stage 3 |
+| Chứng minh hai chiều của cổng quản trị | run [`41889870707`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889870707): lần 1 đỏ, lần 2 xanh, **cùng commit** `fac7dad`, khác biệt duy nhất là bảo vệ nhánh phía GitHub |
+| Báo cáo nộp thầy | không nằm trong kho này, giữ ở máy cục bộ theo yêu cầu |
+
+Kết quả cốt lõi: SonarQube Community cho **0 lỗ hổng và xếp hạng an toàn mức A trên
+cả hai nhánh**, kể cả nhánh có khiếm khuyết, trong khi Semgrep bắt 64 phát hiện mức
+ERROR trên `main` và 50 trên `patched`. Một quality gate đạt của SonarQube Community
+là bằng chứng về chất lượng mã, không phải bằng chứng về an toàn.
 
 ## Cấu trúc
 
@@ -51,15 +69,18 @@ report/              bao cao nop thay
 
 ## Trạng thái đo được của hệ thống
 
-| Lớp | Đối tượng | Lỗi | Cảnh báo |
+| Lớp kiểm | Công cụ | `main` (`37fe7ff`) | `patched` (`5040924`) |
 |---|---|---|---|
-| Build | hai Dockerfile | 8 | 2 |
-| Triển khai | ba tệp compose | 31 | 11 |
-| Quản trị | nhánh `main` | 1 trước khi bật bảo vệ nhánh, 0 sau khi bật | 0 |
-| Mã nguồn | 23 tệp PHP | 36 phát hiện | |
-| Chuỗi cung ứng | hai ảnh nền | 145 CVE mức HIGH và CRITICAL | |
+| Policy as Code, build | Conftest | 8 vi phạm trên hai Dockerfile | 0 |
+| Policy as Code, triển khai | Conftest | 18 vi phạm trên hai tệp compose | 0 |
+| Policy as Code, quản trị | Conftest | 2 vi phạm | 0 |
+| Security as Code | SonarQube | quality gate ERROR, 0 lỗ hổng, 10 bug, 15 code smell | quality gate OK, 0 lỗ hổng, 0 bug, 19 code smell |
+| Security as Code | Semgrep | 64 phát hiện mức ERROR | 50 |
+| Test-Driven Security | PHP, socket thô | 5 phép kiểm, 0 đạt | 6 phép kiểm, 6 đạt |
+| Compliance as Code | InSpec | 7 control, 3 đạt | 7 control, 7 đạt |
+| Chuỗi cung ứng | Trivy | 3 CVE mức CRITICAL trên hai ảnh nền | 0 sau miễn trừ có thời hạn |
 
-`conftest verify` hiện 36 test, 36 đạt. Toàn bộ số liệu trên có tệp bằng chứng
+`conftest verify` hiện 38 test, 38 đạt. Toàn bộ số liệu trên có tệp bằng chứng
 tương ứng trong `evidence/`, mỗi tệp ghi lệnh đã chạy, kết quả, và mã thoát.
 
 ## Chứng minh hai chiều
@@ -81,9 +102,10 @@ cáo: 36 phát hiện vẫn exit 0, 119 CVE vẫn exit 0. Xem `evidence/17` và 
 
 **Thiếu `shell: bash` cho một bước có dấu pipe** thì mã thoát của cả chuỗi lệnh là
 mã thoát của `tee` và luôn bằng 0. Ba cổng stage 1 và hai cổng stage 4 từng báo
-thành công trong khi tệp kết quả của chính chúng chứa dòng FAIL, trong run
-`40748974196` và `40748974200`. Sau khi sửa, cùng mã nguồn cho kết quả trái
-ngược trong run `41810794218`. Xem bao cao muc 4.2.
+thành công trong khi tệp kết quả của chính chúng chứa dòng FAIL. Đo được ở run
+`41889869182`: job Policy as Code báo success trong khi ba tệp kết quả của chính
+nó chứa tổng cộng 41 dòng FAIL và không tệp nào có dòng `exit=`. Cùng ba tệp đó
+ở run `41889988744` có 0 dòng FAIL.
 
 Pipeline `devsecops-gate.yml` có một bước kiểm riêng để bảo đảm không cổng nào
 chạy ở trạng thái 0 test.
@@ -107,7 +129,7 @@ Trên Windows, đặt `PYTHONIOENCODING=utf-8` trước mỗi lệnh Semgrep.
 
 ## Căn cứ tài liệu
 
-Yêu cầu chính thức của thầy gồm bảy điểm, hạn 31/10. Phương pháp lấy từ ba lab
+Yêu cầu chính thức của thầy, hạn 07/11. Phương pháp lấy từ ba lab
 trong đường dẫn môn học: `Policy_as_code_Lab ConfTest.docx`,
 `SonarQube and juice shop Lab.docx`, `Juice_Shop_Telemetry_Lab_Guide.docx`, cùng
 `Hands-on_guide_updated.docx` với 7 phase và 5 mốc chấm. Khung phân tích lấy từ
