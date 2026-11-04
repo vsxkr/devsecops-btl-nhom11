@@ -14,7 +14,7 @@ Hạn nộp 07/11/2026.
 |---|---|
 | Nhánh `main` | trạng thái **có khiếm khuyết**, là đối tượng được đánh giá. Pipeline phải đỏ ở đây |
 | Nhánh `patched` | bản vá. Pipeline phải xanh ở đây |
-| Run xanh mới nhất | [`41894924094`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41894924094) trên `patched`, 7 trên 7 job |
+| Run xanh tham chiếu | [`41934351502`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41934351502) trên `patched`, 7 trên 7 job. Mọi run sau đó trên `patched` cũng phải xanh, xem [tab Actions](https://github.com/vsxkr/devsecops-btl-nhom11/actions) |
 | Run có đủ artifact minh chứng | [`41889988744`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889988744), 5 artifact `evidence-*` |
 | Run đỏ của baseline | [`41889869182`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889869182) trên `main`, bị chặn ở stage 1 và stage 3 |
 | Chứng minh hai chiều của cổng quản trị | run [`41889870707`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889870707): lần 1 đỏ, lần 2 xanh, **cùng commit** `fac7dad`, khác biệt duy nhất là bảo vệ nhánh phía GitHub |
