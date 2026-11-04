@@ -1,0 +1,99 @@
+# Bản vá: khiếm khuyết, cổng phát hiện, cách sửa, chủ sở hữu
+
+Nhánh `main` giữ ứng dụng ở trạng thái **có khiếm khuyết**, vì đó là đối tượng
+được đánh giá. Nhánh `patched` là bản vá. Mỗi dòng dưới đây có cổng phát hiện
+tương ứng và một tệp bằng chứng.
+
+## Đợt 1, đã vá
+
+| # | Khiếm khuyết | Tệp | Cổng phát hiện | Điều khoản | Chủ sở hữu |
+|---|---|---|---|---|---|
+| 1 | Nhật ký ghi nguyên văn câu lệnh và thông điệp lỗi của MariaDB | `lib/logger.php` | TDS-6 | GDPR 5(1)(c), CWE-532 | Mai |
+| 2 | Lỗi CSDL đi ra phản hồi HTTP | `lib/db.php` | TDS-5, `policy-p4-error-detail-to-response` | GDPR 32 | Hải |
+| 3 | Bí mật có giá trị dự phòng là chuỗi hằng | `lib/db.php` | `policy-p3-hardcoded-credential-fallback` | GDPR 32, PCI 8.6.2 | Mạnh |
+| 4 | Ứng dụng kết nối CSDL bằng `root` | `lib/db.php`, compose, `init.sql.template` | `policy-p3-privileged-db-account-default`, luật CREDENTIALS | GDPR 32 | Mạnh |
+| 5 | Mật khẩu người dùng lưu dạng rõ | `init.sql.template`, `login.php` | TDS-4 | GDPR 32, 5(1)(f) | Mạnh |
+| 6 | Vượt xác thực bằng chèn mã tại trang đăng nhập | `login.php` | `policy-p4-sql-injection` | GDPR 32 | Hải |
+| 7 | Không có sự kiện kiểm toán khi đăng nhập thất bại | `logger.php`, `login.php` | luật tương quan Loki | GDPR 32, OWASP A09 | Mai |
+| 8 | Yêu cầu xoá không xoá gì | `privacy_erase.php` | TDS-1 | GDPR 17 | Mai |
+| 9 | Bản xuất trả về `password`, `api_key`, `remember_token` | `privacy_export.php` | TDS-2 | GDPR 15, 5(1)(c) | Đức Anh |
+| 10 | Người này đọc được dữ liệu người khác | `privacy_export.php` | TDS-3 | GDPR 5(1)(f) | Đức Anh |
+| 11 | `display_errors = On`, cookie phiên không có `HttpOnly` | `web/php.ini` | TDS-5 | GDPR 32 | Hải |
+| 12 | `secure_file_priv = ""` và `local_infile = 1` cho phép đọc ghi tệp qua SQL | `db/lab.cnf` | kiểm bằng tay | GDPR 32 | Đức Anh |
+| 13 | Entrypoint mở quyền ghi `1777` cho thư mục chia sẻ | `db/entrypoint.sh` | kiểm bằng tay | GDPR 32 | Đức Anh |
+| 14 | `root@%` với `ALL PRIVILEGES` và quyền `FILE` | `init.sql.template` | luật CREDENTIALS | GDPR 32 | Mạnh |
+| 15 | Hai Dockerfile thiếu `USER`, `HEALTHCHECK`, nhãn OCI | `web/Dockerfile`, `db/Dockerfile` | `docker_security.rego` | CIS Docker 4.1, 4.6 | Đức Anh |
+| 16 | Compose thiếu `cap_drop`, `no-new-privileges`, `read_only`, ảnh không ghim | `docker-compose.yml` | `compose_security.rego` | CIS Docker 5.x | Đức Anh |
+| 17 | Cảnh báo gửi tới `alertmanager:9093` không tồn tại | `patches/monitoring/` | kiểm bằng tay | GDPR 33, 34 | Mai |
+| 18 | Không có chặng che dữ liệu trong Promtail | `patches/monitoring/promtail-config.hardened.yml` | TDS-6 | GDPR 5(1)(c) | Mai |
+| 19 | Luật cảnh báo không tương quan theo nguồn | `patches/monitoring/loki-alert-rules.hardened.yml` | kiểm bằng tay | GDPR 32 | Mai |
+| 20 | Nhánh `main` và `dev` không được bảo vệ | thiết lập GitHub | `repo_policy.rego` | GDPR 32 | Nam |
+| 21 | Cổng chất lượng bị tắt bằng biểu thức luôn cho `false` | `.github/workflows/devsecops-gate.yml` | so sánh mã thoát | GDPR 32 | Nam |
+| 22 | Kết thúc dòng CRLF làm container không khởi động được trên Windows | `.gitattributes` | chạy thật | nguyên tắc tái lập | Nam |
+
+## Đợt 1b, đã vá, phần cổng và cấu hình triển khai
+
+Đợt này sinh ra từ một phát hiện về chính cơ chế kiểm soát, không về ứng dụng.
+
+| # | Khiếm khuyết | Tệp | Cổng phát hiện | Điều khoản | Chủ sở hữu |
+|---|---|---|---|---|---|
+| 23 | Năm bước có dấu pipe mất mã thoát, nên ba cổng stage 1 và hai cổng stage 4 báo thành công trong khi tệp kết quả chứa dòng FAIL | `.github/workflows/devsecops-gate.yml` | đối chiếu trạng thái bước với nội dung tệp kết quả | CS-07 | Nam |
+| 24 | Vòng lặp đọc nhánh `dev` không tồn tại, Conftest kết luận trên một đối tượng rỗng | cùng tệp trên | `ci/check_branch_payload.py` | CS-07 | Nam |
+| 25 | `validate_push_event()` không chặn đẩy trực tiếp vào nhánh phát hành | `ci/policy_guard.py` | ba kịch bản trong `evidence/20-policy-guard-cs01.txt` | CS-01 | Nam |
+| 26 | Hook `commit-msg` trả về 0 khi máy không có Python, tức bỏ qua kiểm tra mà vẫn báo thành công | `.githooks/commit-msg` | chạy thật trên máy không có Python | CS-07 | Nam |
+| 27 | Không có cơ chế ngoại lệ có thời hạn, nên mọi miễn trừ là ngầm định | `policy/exceptions.json`, `ci/check_exceptions.py` | cổng kiểm thời hạn ở stage 1 | CS-08 | Nam |
+| 28 | `paths.include` không phủ `docker-compose.prod.yml` và `docker-compose.monitoring.yml` | `ci/semgrep-local-rules.yml` | so sánh số vi phạm trước và sau khi mở rộng phạm vi | CS-02 | Đức Anh |
+| 29 | Chín vi phạm trên tệp compose của môi trường thật: bí mật dạng hằng, tài khoản `root`, thiếu `cap_drop` và `no-new-privileges`, ảnh dùng thẻ `latest` | `app/InlaneWeb/docker-compose.prod.yml` | `compose_security.rego` | CS-02, CS-04, CS-06 | Đức Anh |
+| 30 | Cụm giám sát dùng bản chưa vá, và mật khẩu Grafana có giá trị dự phòng `admin` | `app/InlaneWeb/docker-compose.monitoring.yml` | `compose_security.rego` | CS-02, CS-04 | Mai |
+| 31 | Quy tắc bí mật dự phòng chỉ bắt `getenv('DB_PASS') ?:`, bỏ sót `??`, `$_ENV` và `$_SERVER` | `ci/semgrep-local-rules.yml` | cặp fixture hai chiều | CS-04 | Mạnh |
+| 32 | Tám lỗi lập trình làm `reliability_rating` ở mức C, quality gate chặn vì lý do ngoài an toàn | 7 tệp trong `pages/`, `index.php` | SonarQube, `sonarqube/issues.json` của run `40748974200` | CS-07 | Mạnh |
+| 33 | Không có vòng lặp theo dõi lỗ hổng xuất hiện sau ngày phát hành | `.github/workflows/auto-remediate.yml`, `ci/cve_watch.py` | so sánh với mốc cơ sở `sbom/cve-baseline.json` | CS-02, CS-07 | Mạnh |
+
+| 34 | Bí mật đi vào container qua biến môi trường, đọc được bằng `docker inspect` | `docker-compose.yml`, `lib/db.php`, `db/entrypoint.sh` | `ilf-run-04-no-secrets-in-env` | PCI DSS 8.6.2, GDPR 32 | Mạnh |
+| 35 | Quy tắc `CREDENTIALS` báo vi phạm trên chính dạng đúng, vì khóa `DB_PASS_FILE` khớp biểu thức bí mật | `policy/compose_security.rego` | hai test hai chiều trong `compose_security_test.rego` | CS-02 | Đức Anh |
+| 36 | Quyền `0600` của tệp bí mật làm container không đặc quyền không đọc được, MariaDB không khởi động | `ci/make_env.sh` | chạy thật, run `41815649692` | CS-04 | Mạnh |
+| 37 | Profile tuân thủ báo đạt trên một container đã tạo nhưng chưa chạy | `compliance/controls/docker_runtime.rb` | `ilf-run-00-dang-chay` | CS-07 | Đức Anh |
+| 38 | Ảnh `chef/inspec` không có docker CLI, nên sáu control báo lỗi thay vì đánh giá | `.github/workflows/devsecops-gate.yml` | đối chiếu nội dung `ci-13-inspec.txt` với trạng thái bước | CS-07 | Đức Anh |
+
+| 39 | `ci/validate_configs.py` ghép đường dẫn sai nên kiểm 0 tệp rồi trả về 0, tức báo đạt mà không kiểm gì, và không được gọi ở workflow nào | `ci/validate_configs.py`, `.github/workflows/devsecops-gate.yml` | chạy thật rồi đối chiếu dòng tổng kết | CS-07 | Mạnh |
+
+## Đợt 2, chưa vá, có chủ đích
+
+Mười điểm chèn mã truy vấn còn lại trong các trang nghiệp vụ:
+
+| Tệp | Loại | Chủ sở hữu |
+|---|---|---|
+| `pages/ports.php` | SELECT, UNION | Hải |
+| `pages/news.php` | SELECT | Hải |
+| `pages/port_detail.php` | SELECT | Hải |
+| `pages/track_api.php` | SELECT, time-based | Hải |
+| `pages/account.php` | SELECT | Mai |
+| `pages/account_update.php` | UPDATE, nâng quyền | Đức Anh |
+| `pages/comment_add.php` | INSERT | Mai |
+| `pages/comment_delete.php` | DELETE | Mai |
+| `pages/shipment_detail.php` | SELECT, thiếu kiểm quyền sở hữu | Hải |
+| `pages/report_download.php` | SELECT, đọc tệp | Đức Anh |
+| `pages/admin_console.php` | stacked query | Đức Anh |
+
+**Lý do hoãn có chủ đích, không phải bỏ sót.** `TDS-6` khẳng định luồng nhật ký
+không chứa nguyên văn câu lệnh. Để khẳng định được điều đó, phải có một truy vấn
+thất bại thật. Nếu vá hết mười điểm trên trong cùng một đợt thì không còn truy
+vấn nào lỗi, và phép kiểm mất đối tượng đo: nó sẽ báo đạt vì không có gì để kiểm,
+đúng loại đạt giả mà chúng tôi đã gặp ba lần khi dựng bộ test.
+
+Trình tự đúng là vá tầng kiểm soát trước, chứng minh tầng đó hoạt động bằng một
+khiếm khuyết còn lại, rồi mới vá nốt các khiếm khuyết đó ở đợt sau, lúc này
+`TDS-6` được thay bằng một phép kiểm trực tiếp trên hàm ghi nhật ký.
+
+Cách chuyển sang câu lệnh chuẩn bị trước đã có sẵn trợ giúp trong `lib/db.php`:
+`query_p()`, `query_one_p()`, `exec_write_p()`, và mẫu đầy đủ ở
+`fixtures/php/profile_update.patched.php`.
+
+## Hai chỗ cố tình giữ nguyên
+
+`pages/admin_console.php` dùng `mysqli_multi_query`, và `pages/track_api.php` cố
+ý nuốt lỗi truy vấn. Cả hai được giữ để báo cáo nói về chúng: điểm thứ nhất cho
+thấy một API cho phép nhiều câu lệnh trong một lời gọi mở ra lớp tấn công khác,
+điểm thứ hai cho thấy **một endpoint nuốt lỗi thì không công cụ nào và không phép
+kiểm nào dựa trên phản hồi phát hiện được nó**. Chúng tôi phát hiện điều thứ hai
+khi chọn sai endpoint làm phép thăm dò cho `TDS-5`.
