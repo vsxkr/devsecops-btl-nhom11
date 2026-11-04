@@ -62,6 +62,11 @@ jobs:
         # Cung nguyen tac voi `conftest verify` o job ben canh: bo test cua chinh
         # quy tac phai dat TRUOC khi quy tac duoc dung de chan bat ky thu gi. Bo
         # test giu ca hai chieu, ke ca chieu "dang hop le phai duoc chap nhan".
+        env:
+          # Bo kiem chay ca cac ca AM. Khong co bien nay thi moi lan chay no
+          # in `::error` that len trang run, va mot run XANH van hien ra ba
+          # chu thich LOI khong co that. Xem log_error trong ci/policy_guard.py.
+          POLICY_GUARD_QUIET: "1"
         run: python3 tests/test_policy_guard.py
 
       - name: Kiem quy uoc dat ten commit va PR

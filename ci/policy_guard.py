@@ -72,8 +72,17 @@ LINE = "=" * 70
 
 
 def log_error(title: str, message: str) -> None:
-    """In loi kem cu phap chu thich cua GitHub Actions."""
+    """In loi kem cu phap chu thich cua GitHub Actions.
+
+    Bo kiem cua chinh cong chay ca cac ca AM, tuc co goi ham nay voi du lieu
+    co y sai. Khong chan lai thi moi lan chay bo kiem se in `::error` that len
+    trang run, va mot run XANH van hien ra ba chu thich LOI khong co that.
+    POLICY_GUARD_QUIET tat phan chu thich, giu nguyen van ban cho nguoi doc.
+    """
     escaped_msg = message.replace("\n", "%0A")
+    if os.environ.get("POLICY_GUARD_QUIET") == "1":
+        print(f"[LOI, che do kiem thu] {title}", file=sys.stderr)
+        return
     print(f"::error title={title}::{escaped_msg}", file=sys.stderr)
 
 
