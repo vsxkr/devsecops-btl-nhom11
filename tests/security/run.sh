@@ -38,6 +38,18 @@ KEEP_UP=0
 
 say() { printf '\n==> %s\n' "$*"; }
 
+say "0. Chuan bi bien moi truong"
+ENV_FILE="$ROOT/app/InlaneWeb/.env"
+# Mot cho sinh bi mat duy nhat, dung cho ca bo test va cho stage CD. Truoc day
+# doan sinh nay nam ngay trong tep nay, nen hai duong co the lech nhau: tep .env
+# duoc sinh nhung cac tep trong secrets/ thi khong, va container khong khoi dong
+# duoc vi khong doc duoc /run/secrets.
+bash "$ROOT/ci/make_env.sh" "$ENV_FILE"
+# shellcheck disable=SC1090
+set -a; . "$ENV_FILE"; set +a
+TEST_DB_USER="${TEST_DB_USER:-ilf_test}"
+TEST_DB_PASS="${TEST_DB_PASSWORD}"
+
 say "1. Dung stack InlaneWeb"
 docker compose -f "$COMPOSE_FILE" up -d --wait 2>&1 | tail -5 || {
   echo "LOI: khong dung duoc stack. Docker Desktop da chay chua?"
@@ -66,13 +78,21 @@ LOG_SINCE=$(date -u +%Y-%m-%dT%H:%M:%SZ)
 echo "   moc: $LOG_SINCE"
 
 say "4. Chay compliance_test.php trong container"
-# Dich la THU MUC, khong phai duong dan tep. Dua duong dan tep thi docker bao
-# "extraction point is not a directory".
-docker cp "$ROOT/tests/security/compliance_test.php" "${WEB_CONTAINER}://tmp/" >/dev/null
+# Chay trong MOT CONTAINER RIENG tren cung mang, dung chinh anh cua ung dung vi
+# anh do da co mysqli. Thu muc test mount o che do chi doc.
+# Ly do khong dung `docker cp` roi `docker exec`: sau ban va container ung dung
+# co read_only: true, nen docker bao "container rootfs is marked read-only".
+NET=$(docker inspect -f '{{range $k, $v := .NetworkSettings.Networks}}{{$k}}{{end}}' "$WEB_CONTAINER")
+WEB_IMAGE=$(docker inspect -f '{{.Config.Image}}' "$WEB_CONTAINER")
+TESTS_DIR_HOST=$( (cd "$ROOT/tests/security" && pwd -W) 2>/dev/null || echo "$ROOT/tests/security" )
+echo "   mang: $NET | anh: $WEB_IMAGE"
 set +e
-docker exec -e DB_HOST=db -e DB_USER="${TEST_DB_USER:-root}" \
-  -e DB_PASS="${TEST_DB_PASS:-password}" -e DB_NAME=ilfreight \
-  "$WEB_CONTAINER" php "$CONTAINER_TEST_PATH"
+docker run --rm --network "$NET" \
+  -v "${TESTS_DIR_HOST}://tests:ro" \
+  -e APP_HOST=web -e APP_PORT=8080 \
+  -e DB_HOST=db -e DB_USER="${TEST_DB_USER:-ilf_test}" \
+  -e DB_PASS="${TEST_DB_PASS:-}" -e DB_NAME=ilfreight \
+  "$WEB_IMAGE" php //tests/compliance_test.php
 PHP_RC=$?
 set -e
 
