@@ -19,7 +19,7 @@ quan trọng: khi cơ quan quản lý hoặc khách hàng yêu cầu, công ty p
 bằng chứng chứ không phải lời cam kết.
 
 Chính sách này do đó không dừng ở việc nêu yêu cầu. Mỗi điều khoản được gắn
-với một cổng kiểm soát tự động trong pipeline, và mỗi lần chạy pipeline để lại
+với một cổng kiểm soát tự động trong pipeline, và mỗi run pipeline để lại
 một tệp bằng chứng. Phần mềm không qua được cổng thì không được phát hành.
 
 ## 2. Tám điều khoản bắt buộc

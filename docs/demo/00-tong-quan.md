@@ -16,7 +16,7 @@ vì P1 đến P4 là lỗi mã còn P5 cùng các luật cấu hình là lỗi t
 
 | Thành viên | Mã học viên | Chính sách | Vấn đề | Nhóm lỗi | Pha DevSecOps |
 |---|---|---|---|---|---|
-| Nguyễn Giang Nam (trưởng nhóm) | B26CHAT030 | Quản trị + P3 | Thiếu kiểm soát thay đổi mã nguồn và cổng chất lượng bị tắt | vận hành | Plan, Code |
+| Nguyễn Giang Nam (trưởng nhóm) | B26CHAT030 | Quản trị + P3 | Thiếu kiểm soát thay đổi mã nguồn và quality gate bị tắt | vận hành | Plan, Code |
 | Nguyễn Đình Hải | B26CHAT010 | P4 | Chèn mã truy vấn làm lộ dữ liệu cá nhân | code | Build, Test |
 | Đào Xuân Mạnh | B26CHAT026 | P3 | Bí mật gán cứng, mật khẩu dạng rõ, tài khoản CSDL đặc quyền | code và triển khai | Code, Build |
 | Lê Đức Anh | B26CHAT003 | P1 và P2 | Cấu hình triển khai mất an toàn và phân quyền ngang | triển khai | Release, Deploy |
@@ -82,14 +82,14 @@ chỉ báo cáo và trả 0. Xem `evidence/17` và `evidence/23`.
 26 tệp, mỗi tệp ghi lệnh đã chạy, kết quả, và mã thoát. Dùng trực tiếp khi viết
 báo cáo, không cần chạy lại.
 
-## Hai lần chạy quét trên GitHub Actions
+## Hai run quét trên GitHub Actions
 
 | Nhánh | Run ID | Commit | Trạng thái |
 |---|---|---|---|
-| `main` (khiếm khuyết) | `40748974196` | `94004f3` | thất bại ở cổng chất lượng (ERROR), 25 vấn đề Sonar, 0 lỗ hổng, 64 phát hiện Semgrep |
-| `patched` (đã vá) | `40748974200` | `0c9cdfd` | thất bại ở cổng chất lượng (ERROR), 27 vấn đề Sonar, 0 lỗ hổng, 46 phát hiện Semgrep |
+| `main` (khiếm khuyết) | `40748974196` | `94004f3` | thất bại ở quality gate (ERROR), 25 vấn đề Sonar, 0 lỗ hổng, 64 phát hiện Semgrep |
+| `patched` (đã vá) | `40748974200` | `0c9cdfd` | thất bại ở quality gate (ERROR), 27 vấn đề Sonar, 0 lỗ hổng, 46 phát hiện Semgrep |
 
-Cả hai đều dừng tại cổng chất lượng SonarQube vì `reliability_rating` bằng 3, không phải vì an toàn. Số liệu lấy từ artifact `evidence-security-as-code` của mỗi lần chạy.
+Cả hai đều dừng tại quality gate SonarQube vì `reliability_rating` bằng 3, không phải vì an toàn. Số liệu lấy từ artifact `evidence-security-as-code` của mỗi run.
 
 Artifact của bốn run đầu còn tải được tới 18 đến 21 tháng 11. Đã tải sẵn vào
 `evidence/` của phiên làm việc.

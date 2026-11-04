@@ -28,7 +28,7 @@ tương ứng và một tệp bằng chứng.
 | 18 | Không có chặng che dữ liệu trong Promtail | `patches/monitoring/promtail-config.hardened.yml` | TDS-6 | GDPR 5(1)(c) | Mai |
 | 19 | Luật cảnh báo không tương quan theo nguồn | `patches/monitoring/loki-alert-rules.hardened.yml` | kiểm bằng tay | GDPR 32 | Mai |
 | 20 | Nhánh `main` và `dev` không được bảo vệ | thiết lập GitHub | `repo_policy.rego` | GDPR 32 | Nam |
-| 21 | Cổng chất lượng bị tắt bằng biểu thức luôn cho `false` | `.github/workflows/devsecops-gate.yml` | so sánh mã thoát | GDPR 32 | Nam |
+| 21 | Quality gate bị tắt bằng biểu thức luôn cho `false` | `.github/workflows/devsecops-gate.yml` | so sánh mã thoát | GDPR 32 | Nam |
 | 22 | Kết thúc dòng CRLF làm container không khởi động được trên Windows | `.gitattributes` | chạy thật | nguyên tắc tái lập | Nam |
 
 ## Đợt 1b, đã vá, phần cổng và cấu hình triển khai

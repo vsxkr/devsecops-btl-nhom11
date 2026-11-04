@@ -73,7 +73,7 @@ có một phép kiểm mà không có. Chứng minh phần đó là `TDS-3` củ
 
 ## Lưu ý về run
 
-Số liệu SQL injection lấy từ hai lần chạy thật của kho: run `40748974196` trên
+Số liệu SQL injection lấy từ hai run thật của kho: run `40748974196` trên
 nhánh `main` và run `40748974200` trên nhánh `patched`. Cả hai sinh artifact
 `evidence-security-as-code` chứa `ci-05-semgrep.json`. Luật `policy-p4-sql-injection`
 của nhóm bắt 12 vị trí trên `main` và 8 trên `patched`.

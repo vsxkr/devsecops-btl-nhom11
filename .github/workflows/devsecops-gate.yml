@@ -52,7 +52,7 @@ env:
 jobs:
   # ---------------------------------------------------------------------------
   stage1_policy_guard:
-    name: "[CHANG 1] Policy Guard, ten commit va pull request"
+    name: "[STAGE 1] Policy Guard, ten commit va pull request"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -82,7 +82,7 @@ jobs:
 
   # ---------------------------------------------------------------------------
   stage1_policy_as_code:
-    name: "[CHANG 1] Policy as Code, cau hinh va quan tri"
+    name: "[STAGE 1] Policy as Code, cau hinh va quan tri"
     runs-on: ubuntu-latest
     # LUU Y VE PHAM VI TOKEN, da thu va bi tu choi:
     # Khoi `permissions` cua GITHUB_TOKEN KHONG co khoa `administration`. Khai
@@ -205,7 +205,7 @@ jobs:
 
   # ---------------------------------------------------------------------------
   stage2_security_as_code:
-    name: "[CHANG 2] Security as Code, SonarQube va Semgrep"
+    name: "[STAGE 2] Security as Code, SonarQube va Semgrep"
     runs-on: ubuntu-latest
     needs: [stage1_policy_guard, stage1_policy_as_code]
     timeout-minutes: 25
@@ -323,7 +323,7 @@ jobs:
 
   # ---------------------------------------------------------------------------
   stage3_supply_chain:
-    name: "[CHANG 3] Chuoi cung ung, CVE va SBOM"
+    name: "[STAGE 3] Chuoi cung ung, CVE va SBOM"
     runs-on: ubuntu-latest
     needs: [stage1_policy_as_code]
     steps:
@@ -398,7 +398,7 @@ jobs:
 
   # ---------------------------------------------------------------------------
   stage4_test_driven_security:
-    name: "[CHANG 4] Test-Driven Security va Compliance as Code"
+    name: "[STAGE 4] Test-Driven Security va Compliance as Code"
     runs-on: ubuntu-latest
     needs: [stage2_security_as_code]
     steps:
@@ -446,7 +446,7 @@ jobs:
   # CD. Chi chay tren nhanh ban va, vi nhanh main duoc giu o trang thai co
   # khiem khuyet lam doi tuong danh gia va khong duoc phat hanh.
   stage5_cd_release:
-    name: "[CHANG 5] CD, phat hanh co xac minh va quay lui"
+    name: "[STAGE 5] CD, phat hanh co xac minh va quay lui"
     runs-on: ubuntu-latest
     needs: [stage2_security_as_code, stage3_supply_chain, stage4_test_driven_security]
     if: github.ref == 'refs/heads/patched' && github.event_name != 'pull_request'

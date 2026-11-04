@@ -71,7 +71,7 @@ lời trực tiếp yêu cầu số 3 của bài tập nhóm và phần phân t�
 
 ## Kết luận
 
-1. SonarQube Community không phải là cổng an toàn mà là cổng chất lượng mã. Trên
+1. SonarQube Community không phải là cổng an toàn mà là quality gate mã. Trên
    dự án này nó không là cổng duy nhất bắt được bất kỳ lớp khiếm khuyết nào, và nó
    xếp loại 0 vấn đề là `VULNERABILITY`. Dùng nó làm cổng an toàn duy nhất là một
    nhận định sai về năng lực công cụ, không phải một lỗi cấu hình.
@@ -85,7 +85,7 @@ lời trực tiếp yêu cầu số 3 của bài tập nhóm và phần phân t�
 3. Một lớp khiếm khuyết không cổng nào bắt được, chỉ phát hiện khi chạy thật: kết
    thúc dòng CRLF làm container không khởi động trên Windows. Conftest đọc nội
    dung cấu hình chứ không đọc byte kết thúc dòng, Semgrep đọc cây cú pháp, Trivy
-   đọc gói và CVE. Trong 150 lần chạy pipeline của nhóm không lần nào bắt được, vì
+   đọc gói và CVE. Trong 150 run pipeline của nhóm không run nào bắt được, vì
    runner Linux checkout ra LF.
 
 4. Một lớp khiếm khuyết không một cổng **tĩnh hay hành vi** nào bắt được: ứng dụng
@@ -105,7 +105,7 @@ Cụm giám sát đã vá là cổng duy nhất trả lời câu đó. `tests/se
 chạy một loạt tám yêu cầu mang đặc trưng SQL injection vào ứng dụng đã vá rồi đo
 cả chuỗi: Apache ghi log JSON → Promtail che dữ liệu → Loki đếm theo từng nguồn
 bằng `| json` → luật `SqliProbeBurstFromSingleSource` vượt ngưỡng → Alertmanager →
-alert sink. Đo qua ba lần chạy độc lập, **độ trễ phát hiện 15,1 / 20,9 / 24,6
+alert sink. Đo qua ba run độc lập, **độ trễ phát hiện 15,1 / 20,9 / 24,6
 giây**, bị giới hạn bởi chu kỳ đánh giá luật 15 giây và `group_wait` 10 giây của
 Alertmanager. Cùng chuỗi đó kích **hai mức** cùng lúc, `SqliProbeObserved` mức
 info để đối chiếu và `SqliProbeBurstFromSingleSource` mức critical để gọi người
