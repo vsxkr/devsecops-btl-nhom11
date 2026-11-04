@@ -43,7 +43,7 @@ một nhãn tự khai trong Dockerfile.
 
 ```
 curl -H "Authorization: Bearer $GH_TOKEN" \
-  https://api.github.com/repos/vsxkr/btl-devsecops-nhom11/branches/main
+  https://api.github.com/repos/vsxkr/devsecops-btl-nhom11/branches/main
 ```
 
 ## Chiều xanh
