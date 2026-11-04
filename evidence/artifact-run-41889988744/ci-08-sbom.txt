@@ -1,0 +1,2 @@
+sbom/mariadb-10.11.cdx.json 157 thanh phan
+sbom/php-8.2-apache.cdx.json 187 thanh phan

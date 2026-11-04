@@ -1,0 +1,173 @@
+{
+  "total": 24,
+  "components": [
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/account.php",
+      "name": "account.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/account.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/account_update.php",
+      "name": "account_update.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/account_update.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/admin_console.php",
+      "name": "admin_console.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/admin_console.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/admin_dashboard.php",
+      "name": "admin_dashboard.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/admin_dashboard.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/admin_report_export.php",
+      "name": "admin_report_export.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/admin_report_export.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/comment_add.php",
+      "name": "comment_add.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/comment_add.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/comment_delete.php",
+      "name": "comment_delete.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/comment_delete.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/lib/db.php",
+      "name": "db.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/lib/db.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/home.php",
+      "name": "home.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/home.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/index.php",
+      "name": "index.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/index.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/lib/layout.php",
+      "name": "layout.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/lib/layout.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/lib/logger.php",
+      "name": "logger.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/lib/logger.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/login.php",
+      "name": "login.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/login.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/logout.php",
+      "name": "logout.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/logout.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/news.php",
+      "name": "news.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/news.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/port_detail.php",
+      "name": "port_detail.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/port_detail.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/ports.php",
+      "name": "ports.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/ports.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/privacy_erase.php",
+      "name": "privacy_erase.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/privacy_erase.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/privacy_export.php",
+      "name": "privacy_export.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/privacy_export.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/report_download.php",
+      "name": "report_download.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/report_download.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/shipment_detail.php",
+      "name": "shipment_detail.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/shipment_detail.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/assets/style.css",
+      "name": "style.css",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/assets/style.css",
+      "language": "css"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/track.php",
+      "name": "track.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/track.php",
+      "language": "php"
+    },
+    {
+      "key": "btl-devsecops-nhom11:app/InlaneWeb/web/src/pages/track_api.php",
+      "name": "track_api.php",
+      "qualifier": "FIL",
+      "path": "app/InlaneWeb/web/src/pages/track_api.php",
+      "language": "php"
+    }
+  ]
+}

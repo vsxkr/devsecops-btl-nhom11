@@ -1,0 +1,37 @@
+{
+  "projectStatus": {
+    "status": "OK",
+    "conditions": [
+      {
+        "status": "OK",
+        "metricKey": "reliability_rating",
+        "comparator": "GT",
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "security_rating",
+        "comparator": "GT",
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "sqale_rating",
+        "comparator": "GT",
+        "errorThreshold": "1",
+        "actualValue": "1"
+      },
+      {
+        "status": "OK",
+        "metricKey": "duplicated_lines_density",
+        "comparator": "GT",
+        "errorThreshold": "10",
+        "actualValue": "0.0"
+      }
+    ],
+    "ignoredConditions": false,
+    "caycStatus": "over-compliant"
+  }
+}

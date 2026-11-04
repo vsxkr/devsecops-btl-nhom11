@@ -1,0 +1,8 @@
+== app/InlaneWeb/web/Dockerfile ==
+WARN - app/InlaneWeb/web/Dockerfile - dockerfile - SUPPLY-CHAIN: base image 'php:8.2-apache' is not pinned by digest.
+
+11 tests, 10 passed, 1 warning, 0 failures, 0 exceptions
+== app/InlaneWeb/db/Dockerfile ==
+WARN - app/InlaneWeb/db/Dockerfile - dockerfile - SUPPLY-CHAIN: base image 'mariadb:10.11' is not pinned by digest.
+
+11 tests, 10 passed, 1 warning, 0 failures, 0 exceptions
