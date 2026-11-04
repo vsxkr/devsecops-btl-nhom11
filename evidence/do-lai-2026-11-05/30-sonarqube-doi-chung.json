@@ -1,0 +1,102 @@
+{
+  "devsecops-btl-nhom11-main": {
+    "label": "main 37fe7ff",
+    "measures": {
+      "bugs": "10",
+      "reliability_rating": "3.0",
+      "code_smells": "15",
+      "duplicated_lines_density": "0.0",
+      "security_rating": "1.0",
+      "ncloc": "734",
+      "files": "24",
+      "vulnerabilities": "0",
+      "security_hotspots": "0",
+      "sqale_rating": "1.0"
+    },
+    "quality_gate": "ERROR",
+    "conditions": [
+      {
+        "m": "reliability_rating",
+        "s": "ERROR",
+        "v": "3"
+      },
+      {
+        "m": "security_rating",
+        "s": "OK",
+        "v": "1"
+      },
+      {
+        "m": "sqale_rating",
+        "s": "OK",
+        "v": "1"
+      },
+      {
+        "m": "duplicated_lines_density",
+        "s": "OK",
+        "v": "0.0"
+      }
+    ],
+    "issues_total": 25,
+    "rules": {
+      "php:S2003": 1,
+      "php:S100": 6,
+      "Web:S6853": 4,
+      "Web:InputWithoutLabelCheck": 9,
+      "php:S113": 4,
+      "php:S121": 1
+    },
+    "types": {
+      "BUG": 10,
+      "CODE_SMELL": 15
+    }
+  },
+  "devsecops-btl-nhom11-patched": {
+    "label": "patched 5040924",
+    "measures": {
+      "bugs": "0",
+      "reliability_rating": "1.0",
+      "code_smells": "19",
+      "duplicated_lines_density": "0.0",
+      "security_rating": "1.0",
+      "ncloc": "899",
+      "files": "24",
+      "vulnerabilities": "0",
+      "security_hotspots": "0",
+      "sqale_rating": "1.0"
+    },
+    "quality_gate": "OK",
+    "conditions": [
+      {
+        "m": "reliability_rating",
+        "s": "OK",
+        "v": "1"
+      },
+      {
+        "m": "security_rating",
+        "s": "OK",
+        "v": "1"
+      },
+      {
+        "m": "sqale_rating",
+        "s": "OK",
+        "v": "1"
+      },
+      {
+        "m": "duplicated_lines_density",
+        "s": "OK",
+        "v": "0.0"
+      }
+    ],
+    "issues_total": 19,
+    "rules": {
+      "php:S100": 11,
+      "php:S112": 2,
+      "php:S1172": 1,
+      "php:S113": 4,
+      "php:S121": 1
+    },
+    "types": {
+      "CODE_SMELL": 19
+    }
+  }
+}

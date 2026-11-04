@@ -1,0 +1,18 @@
+$ docker run ... php /tests/compliance_test.php   (NHANH MAIN, baseline)
+Test-Driven Security, InlaneWeb
+------------------------------------------------------------------------------
+chu the du lieu test: id=5 username=tds_subject
+------------------------------------------------------------------------------
+  [LOI ] TDS-4   GDPR Art. 32               mat khau khong duoc luu dang ro
+          -> cot password chua dung chuoi dang ro: Spring2024!
+  [LOI ] TDS-5   GDPR Art. 32               phan hoi loi khong duoc lo noi bo
+          -> phan hoi chua: SQL Error, syntax, SQL syntax, MariaDB server version
+  [LOI ] TDS-2   GDPR Art. 15, Art. 5(1)(c) ban xuat khong duoc chua thong tin xac thuc
+          -> ban xuat chua: password, api_key, remember_token, gia tri mat khau dang ro
+  [LOI ] TDS-3   GDPR Art. 5(1)(f)          khong doc duoc du lieu cua chu the khac
+          -> status=200 va ban xuat tra ve profile id=1 cua nguoi khac
+  [LOI ] TDS-1   GDPR Art. 17               yeu cau xoa phai xoa hoac an danh hoa
+          -> status=200, email van con nhan dang duoc: co, so binh luan con lai: 1
+------------------------------------------------------------------------------
+5 test, 0 dat, 5 that bai
+exit=1
