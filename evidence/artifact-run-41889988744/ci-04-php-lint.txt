@@ -1,0 +1,73 @@
+Unable to find image 'php:8.2-cli' locally
+8.2-cli: Pulling from library/php
+6fc242d221a6: Pulling fs layer
+75ee8fbec39a: Pulling fs layer
+aeb471f54fd1: Pulling fs layer
+09795b4110a7: Pulling fs layer
+003f47cf593c: Pulling fs layer
+293c39bb95a3: Pulling fs layer
+4e49da3cc987: Pulling fs layer
+0177d807db82: Pulling fs layer
+88accd2c59d2: Pulling fs layer
+6b2db086eb74: Pulling fs layer
+293c39bb95a3: Waiting
+4e49da3cc987: Waiting
+0177d807db82: Waiting
+88accd2c59d2: Waiting
+09795b4110a7: Waiting
+003f47cf593c: Waiting
+75ee8fbec39a: Verifying Checksum
+75ee8fbec39a: Download complete
+09795b4110a7: Verifying Checksum
+09795b4110a7: Download complete
+6fc242d221a6: Verifying Checksum
+6fc242d221a6: Download complete
+293c39bb95a3: Verifying Checksum
+293c39bb95a3: Download complete
+003f47cf593c: Verifying Checksum
+003f47cf593c: Download complete
+0177d807db82: Verifying Checksum
+0177d807db82: Download complete
+88accd2c59d2: Verifying Checksum
+88accd2c59d2: Download complete
+4e49da3cc987: Verifying Checksum
+4e49da3cc987: Download complete
+6b2db086eb74: Verifying Checksum
+6b2db086eb74: Download complete
+aeb471f54fd1: Verifying Checksum
+aeb471f54fd1: Download complete
+6fc242d221a6: Pull complete
+75ee8fbec39a: Pull complete
+aeb471f54fd1: Pull complete
+09795b4110a7: Pull complete
+003f47cf593c: Pull complete
+293c39bb95a3: Pull complete
+4e49da3cc987: Pull complete
+0177d807db82: Pull complete
+88accd2c59d2: Pull complete
+6b2db086eb74: Pull complete
+Digest: sha256:a76ea7d3dd8f65eefff85e9c883f4d146808e0075c30ae6bccbb2a3753d373b8
+Status: Downloaded newer image for php:8.2-cli
+No syntax errors detected in /src/lib/db.php
+No syntax errors detected in /src/lib/logger.php
+No syntax errors detected in /src/lib/layout.php
+No syntax errors detected in /src/pages/track.php
+No syntax errors detected in /src/pages/privacy_erase.php
+No syntax errors detected in /src/pages/account_update.php
+No syntax errors detected in /src/pages/port_detail.php
+No syntax errors detected in /src/pages/logout.php
+No syntax errors detected in /src/pages/admin_console.php
+No syntax errors detected in /src/pages/comment_add.php
+No syntax errors detected in /src/pages/admin_report_export.php
+No syntax errors detected in /src/pages/comment_delete.php
+No syntax errors detected in /src/pages/account.php
+No syntax errors detected in /src/pages/ports.php
+No syntax errors detected in /src/pages/shipment_detail.php
+No syntax errors detected in /src/pages/home.php
+No syntax errors detected in /src/pages/report_download.php
+No syntax errors detected in /src/pages/track_api.php
+No syntax errors detected in /src/pages/privacy_export.php
+No syntax errors detected in /src/pages/admin_dashboard.php
+No syntax errors detected in /src/pages/news.php
+No syntax errors detected in /src/pages/login.php
+No syntax errors detected in /src/index.php

@@ -1,0 +1,14 @@
+{
+  "project_key": "btl-devsecops-nhom11",
+  "repository": "vsxkr/devsecops-btl-nhom11",
+  "commit": "5040924ec00b265b6ad38017139c0ad0c0bef827",
+  "run_id": "41889988744",
+  "run_attempt": "1",
+  "image": "sonarqube:26.9.0.129388-community@sha256:c0f1160bccfa435db4168c2d7df69af3c3ea7bfeb87395613014048fb33a68c1",
+  "scanner_version": "8.1.0.6389",
+  "generated_at": "2026-11-04T18:45:48.517941+00:00",
+  "lint": "success",
+  "scanner": "success",
+  "enforce_quality_gate": true,
+  "snapshot": false
+}

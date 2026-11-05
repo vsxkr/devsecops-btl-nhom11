@@ -1,0 +1,309 @@
+[
+    {
+        "Id": "319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820",
+        "Created": "2026-11-04T18:47:36.899987638Z",
+        "Path": "docker-php-entrypoint",
+        "Args": [
+            "apache2-foreground"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 6475,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-11-04T18:47:42.550379798Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2026-11-04T18:47:47.66188305Z",
+                        "End": "2026-11-04T18:47:47.707434382Z",
+                        "ExitCode": 0,
+                        "Output": "{\n    \"status\": \"UP\",\n    \"application\": \"InlaneWeb Logistics Portal\",\n    \"database\": \"CONNECTED\",\n    \"timestamp\": \"2026-11-04T18:47:47Z\"\n}"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:1faf00cd1670ef330c13678e22eac526ca2947861d16973eed9e7d3f5fb2d4e1",
+        "ResolvConfPath": "/var/lib/docker/containers/319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820/hostname",
+        "HostsPath": "/var/lib/docker/containers/319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820/hosts",
+        "LogPath": "/var/lib/docker/containers/319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820/319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820-json.log",
+        "Name": "/ilfreight_web",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "inlaneweb_net",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8088"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": [
+                "ALL"
+            ],
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": true,
+            "SecurityOpt": [
+                "no-new-privileges:true"
+            ],
+            "Tmpfs": {
+                "/tmp": "",
+                "/var/lock/apache2": "",
+                "/var/run/apache2": ""
+            },
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "Mounts": [
+                {
+                    "Type": "bind",
+                    "Source": "/home/runner/work/devsecops-btl-nhom11/devsecops-btl-nhom11/app/InlaneWeb/secrets/app_db_password",
+                    "Target": "/run/secrets/app_db_password",
+                    "ReadOnly": true,
+                    "BindOptions": {}
+                }
+            ],
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "319df11d10d7c6c33ee228f937e32c40ca27cdb593a6711dd73aab094bc48820",
+                "LowerDir": "/var/lib/docker/overlay2/a6da84abaa76f7dd6322b6283e42c596273e64892c5890946c2b7266ed2fb41c-init/diff:/var/lib/docker/overlay2/jz0n8yvq5oqdldp8mkhr5kd0t/diff:/var/lib/docker/overlay2/vmlyq10jq7nqy08l87ayp9xma/diff:/var/lib/docker/overlay2/ms0efeibtx4nxbtuc84se27b4/diff:/var/lib/docker/overlay2/5p6y48zuztzmjxlilkoudf92c/diff:/var/lib/docker/overlay2/z1vm9a6xyz9mipbpiu07jjsw6/diff:/var/lib/docker/overlay2/ri1nfs3qtn57zqdyvri2f9f64/diff:/var/lib/docker/overlay2/q174r88l5bhkigaj9o1tfz14q/diff:/var/lib/docker/overlay2/1aa98506a717878e47939ebcad709056624ce748457d677ed1cf2e4d5a614558/diff:/var/lib/docker/overlay2/e93747d1d5ceab3a246e7e735f7b76f6c3186d81888cd0cfaed2f984e60bc9ca/diff:/var/lib/docker/overlay2/4e04e987d9f11b774b6ba4761a051cf58341a85fc5ba61927a23236ff8042317/diff:/var/lib/docker/overlay2/78a34780419270d3552044c0dca9f949fd394f8f45d09133863cd028751adb05/diff:/var/lib/docker/overlay2/f023a48b00480037c57fa47a4850a794400b8174c966a2aa9cac428ee0437a58/diff:/var/lib/docker/overlay2/37700c7720f621531446dc9a012e242fd196e4307151ebca33264019996438eb/diff:/var/lib/docker/overlay2/2ed0fc20f46fb8cade98da990214384a813acf4d0a19f25680f13ee70105eb68/diff:/var/lib/docker/overlay2/ecf75a7d1e44d3ffd6a8af20d9c157ca2b631fc7a51b03acb3ccca9610abac89/diff:/var/lib/docker/overlay2/64fb3f27a1ec1c4736a66a8da3589885415a465f2a2c6fc19bc9cd73c83e483d/diff:/var/lib/docker/overlay2/1b0453b7ce8beddde189c77596a452f17cd2d63aaff1f770c9a694b15b6554d5/diff:/var/lib/docker/overlay2/20d1dd5093ec88178179f6d41ce11f54919b9f27a06bf7983fc6a4ffcd53034c/diff:/var/lib/docker/overlay2/1217b8b6c5745ef2ccc54afe2bf9e0a96e4f14885b4282e23984ec91fac25624/diff:/var/lib/docker/overlay2/4621483c8eb6550af069ae7afe386b7079a679a5ea869a23761e5084985c8538/diff:/var/lib/docker/overlay2/60dceeb444152103c41fa089cd2b60474200623033b6ef967d74b7f37d995de9/diff:/var/lib/docker/overlay2/24b928339f3e69d9d9fb3ea8b29a72d63e0114d2ea544623a4b8ce90407d0478/diff",
+                "MergedDir": "/var/lib/docker/overlay2/a6da84abaa76f7dd6322b6283e42c596273e64892c5890946c2b7266ed2fb41c/merged",
+                "UpperDir": "/var/lib/docker/overlay2/a6da84abaa76f7dd6322b6283e42c596273e64892c5890946c2b7266ed2fb41c/diff",
+                "WorkDir": "/var/lib/docker/overlay2/a6da84abaa76f7dd6322b6283e42c596273e64892c5890946c2b7266ed2fb41c/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/home/runner/work/devsecops-btl-nhom11/devsecops-btl-nhom11/app/InlaneWeb/secrets/app_db_password",
+                "Destination": "/run/secrets/app_db_password",
+                "Mode": "",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "319df11d10d7",
+            "Domainname": "",
+            "User": "www-data",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {},
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "DB_USER=ilf_app",
+                "DB_PASS_FILE=/run/secrets/app_db_password",
+                "DB_NAME=ilfreight",
+                "DB_HOST=db",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "PHPIZE_DEPS=autoconf \t\tdpkg-dev \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkg-config \t\tre2c",
+                "PHP_INI_DIR=/usr/local/etc/php",
+                "APACHE_CONFDIR=/etc/apache2",
+                "APACHE_ENVVARS=/etc/apache2/envvars",
+                "PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_LDFLAGS=-Wl,-O1 -pie",
+                "GPG_KEYS=39B641343D8C104B2B146DC3F9C39DC0B9698544 E60913E4DF209907D8E30D96659A97C9CF2A795A 1198C0117593497A5EC5C199286AF1F9897469DC",
+                "PHP_VERSION=8.2.35",
+                "PHP_URL=https://www.php.net/distributions/php-8.2.35.tar.xz",
+                "PHP_ASC_URL=https://www.php.net/distributions/php-8.2.35.tar.xz.asc",
+                "PHP_SHA256=5737b98601fe5ab1b8c5db0c82ed3158acb9283ed3081ffe2faffb9ac81455e6"
+            ],
+            "Cmd": [
+                "apache2-foreground"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl -f -s http://127.0.0.1:8080/health || exit 1"
+                ],
+                "Interval": 10000000000,
+                "Timeout": 5000000000,
+                "StartPeriod": 10000000000,
+                "Retries": 3
+            },
+            "Image": "inlaneweb-web:1.0.0",
+            "Volumes": null,
+            "WorkingDir": "/var/www/html",
+            "Entrypoint": [
+                "docker-php-entrypoint"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "autoheal": "true",
+                "com.docker.compose.config-hash": "cfc6ff31c88d53d755d5fe9ba56dfaa8891d65ab45b8ceb7938e1cbe8c1f7a80",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "db:service_healthy:false",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "inlaneweb-dev",
+                "com.docker.compose.project.config_files": "/home/runner/work/devsecops-btl-nhom11/devsecops-btl-nhom11/app/InlaneWeb/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/home/runner/work/devsecops-btl-nhom11/devsecops-btl-nhom11/app/InlaneWeb",
+                "com.docker.compose.service": "web",
+                "com.docker.compose.version": "2.38.2",
+                "org.opencontainers.image.revision": "5040924",
+                "org.opencontainers.image.source": "https://github.com/vsxkr/btl-devsecops-nhom11",
+                "org.opencontainers.image.title": "InlaneWeb portal"
+            },
+            "StopSignal": "SIGWINCH"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "e9c8101918419f40ac6957fba54c07f79edaf638b90c64610cd43356ccfdfc83",
+            "SandboxKey": "/var/run/docker/netns/e9c810191841",
+            "Ports": {
+                "80/tcp": null,
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8088"
+                    }
+                ]
+            },
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "inlaneweb_net": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "ilfreight_web",
+                        "web"
+                    ],
+                    "MacAddress": "5e:0c:e4:3f:c2:7d",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "a48b61f39796d965997c9f6cfa0bd8029bc26a469ddce9089559e0a306f5fd05",
+                    "EndpointID": "f8dee97a6c7f3075c5454f7910d1777be55350d8aa470e5762be86302b3ec17b",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.3",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "ilfreight_web",
+                        "web",
+                        "319df11d10d7"
+                    ]
+                }
+            }
+        }
+    }
+]
