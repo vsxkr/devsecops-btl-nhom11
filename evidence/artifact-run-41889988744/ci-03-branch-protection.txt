@@ -1,7 +1,0 @@
-Nhanh co that trong kho ma nguon: main patched
-Nhanh thuoc dien chinh sach CS-01: main dev
-Nhanh 'dev' thuoc dien chinh sach nhung khong ton tai, khong danh gia.
-CAU TRUC DAT: nhanh 'main', protected=True, co truong protection=True
-== nhanh main ==
-
-3 tests, 3 passed, 0 warnings, 0 failures, 0 exceptions
