@@ -18,6 +18,7 @@ Hạn nộp 07/11/2026.
 | Run có đủ artifact minh chứng | [`41889988744`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889988744), 5 artifact `evidence-*` |
 | Run đỏ của baseline | [`41889869182`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889869182) trên `main`, bị chặn ở stage 1 và stage 3 |
 | Chứng minh hai chiều của cổng quản trị | run [`41889870707`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41889870707): lần 1 đỏ, lần 2 xanh, **cùng commit** `fac7dad`, khác biệt duy nhất là bảo vệ nhánh phía GitHub |
+| Vòng đời quy tắc chạy thật | run [`41937786806`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41937786806) phát hiện CVE mới và tự mở [pull request #1](https://github.com/vsxkr/devsecops-btl-nhom11/pull/1); chính pull request đó **bị cổng CVE chặn** ở run [`41938004357`](https://github.com/vsxkr/devsecops-btl-nhom11/actions/runs/41938004357) |
 | Báo cáo nộp thầy | không nằm trong kho này, giữ ở máy cục bộ theo yêu cầu |
 
 Kết quả cốt lõi: SonarQube Community cho **0 lỗ hổng và xếp hạng an toàn mức A trên
